@@ -41,6 +41,17 @@ int runMultiplier = 9;
 NSUInteger remainingLives;
 BOOL invincible;
 
+CCLabelBMFont *achieveLabel1;
+CCLabelBMFont *achieveLabel2;
+CCLabelBMFont *achieveLabel3;
+CCLabelBMFont *achieveLabel4;
+CCLabelBMFont *achieveLabel5;
+CCLabelBMFont *achieveLabel6;
+CCLabelBMFont *achieveLabel7;
+CCLabelBMFont *achieveLabel8;
+CCLabelBMFont *achieveLabel9;
+CCLabelBMFont *achieveLabel10;
+
 
 @implementation GameLayer
 
@@ -537,6 +548,7 @@ static GameLayer* instanceOfGameLayer;
 
         }
         
+        
 if (remainingLives == 0) {
     NSLog(@"YOU HAVE O LIVES LEFT, YOU DIE!");
     [self showGameOver];
@@ -561,13 +573,19 @@ if (remainingLives == 0) {
             NSLog(@"Ach1 Status: Achieved!");
             
             NSString *ach1 = @"Milestone 1: 1 Minute Run!";
-            CCLabelBMFont *achieveLabel1 = [CCLabelTTF labelWithString:ach1 fontName:@"HelveticaNeue-Light" fontSize:20];
+            achieveLabel1 = [CCLabelTTF labelWithString:ach1 fontName:@"HelveticaNeue-Light" fontSize:20];
             achieveLabel1.position = CGPointMake(screenSize.width/2, screenSize.height/3);
             
-            [self addChild:achieveLabel1 z:0];
+            [self addChild:achieveLabel1 z:0 tag:10];
             
-            // [self removeChild:achieveLabel1 cleanup:YES];
-        
+            CCSequence *sequence1 = [CCSequence actions:
+              [CCDelayTime actionWithDuration:3.5], 
+              [CCCallFunc actionWithTarget:self selector:@selector(clearAch1)], 
+              nil
+             ];
+            
+            [achieveLabel1 runAction:sequence1];
+            
             }
     
     //Achievement 2
@@ -575,12 +593,18 @@ if (remainingLives == 0) {
             NSLog(@"Ach2 Status: Achieved!");
             
             NSString *ach2 = @"Milestone 2: 2.5 Minute Run!";
-            CCLabelBMFont *achieveLabel2 = [CCLabelTTF labelWithString:ach2 fontName:@"HelveticaNeue-Light" fontSize:20];
+            achieveLabel2 = [CCLabelTTF labelWithString:ach2 fontName:@"HelveticaNeue-Light" fontSize:20];
             achieveLabel2.position = CGPointMake(screenSize.width/2, screenSize.height/3);
             
-            [self addChild:achieveLabel2 z:0];
+            [self addChild:achieveLabel2 z:0 tag:11];
             
-            // [self removeChild:achieveLabel2 cleanup:YES];
+            CCSequence *sequence2 = [CCSequence actions:
+                                     [CCDelayTime actionWithDuration:3.5], 
+                                     [CCCallFunc actionWithTarget:self selector:@selector(clearAch2)], 
+                                     nil
+                                     ];
+            
+            [achieveLabel2 runAction:sequence2];
             
             }
     
@@ -589,33 +613,113 @@ if (remainingLives == 0) {
             NSLog(@"Ach3 Status: Achieved!");
             
             NSString *ach3 = @"Milestone 3: 5 Minute Run!";
-            CCLabelBMFont *achieveLabel3 = [CCLabelTTF labelWithString:ach3 fontName:@"HelveticaNeue-Light" fontSize:20];
+            achieveLabel3 = [CCLabelTTF labelWithString:ach3 fontName:@"HelveticaNeue-Light" fontSize:20];
             achieveLabel3.position = CGPointMake(screenSize.width/2, screenSize.height/3);
             
-            [self addChild:achieveLabel3 z:0];
+            [self addChild:achieveLabel3 z:0 tag:12];
             
-            // [self removeChild:achieveLabel3 cleanup:YES];
+            CCSequence *sequence3 = [CCSequence actions:
+                                     [CCDelayTime actionWithDuration:3.5], 
+                                     [CCCallFunc actionWithTarget:self selector:@selector(clearAch3)], 
+                                     nil
+                                     ];
+            
+            [achieveLabel3 runAction:sequence3];
         
             }
     
     //Achievement 4
-        if (runningRate == 5400) {
+        if (runningRate == 4050) {
             NSLog(@"Ach4 Status: Achieved!");
         
             NSString *ach4 = @"Milestone 4: 7.5 Minute Run!";
-            CCLabelBMFont *achieveLabel4 = [CCLabelTTF labelWithString:ach4 fontName:@"HelveticaNeue-Light" fontSize:20];
+            achieveLabel4 = [CCLabelTTF labelWithString:ach4 fontName:@"HelveticaNeue-Light" fontSize:20];
             achieveLabel4.position = CGPointMake(screenSize.width/2, screenSize.height/3);
         
-            [self addChild:achieveLabel4 z:0];
-
-            // [self removeChild:achieveLabel4 cleanup:YES];
+            [self addChild:achieveLabel4 z:0 tag:13];
+            
+            CCSequence *sequence4 = [CCSequence actions:
+                                     [CCDelayTime actionWithDuration:3.5], 
+                                     [CCCallFunc actionWithTarget:self selector:@selector(clearAch4)], 
+                                     nil
+                                     ];
+            
+            [achieveLabel1 runAction:sequence4];
         
     }
 
+    //Achievement 5
+        if (runningRate == 5400) {
+            NSLog(@"Ach5 Status: Achieved!");
+            
+            NSString *ach5 = @"Milestone 5: Wow! 10 Minutes!";
+            achieveLabel5 = [CCLabelTTF labelWithString:ach5 fontName:@"HelveticaNeue-Light" fontSize:20];
+            achieveLabel5.position = CGPointMake(screenSize.width/2, screenSize.height/3);
+            
+            [self addChild:achieveLabel5 z:0 tag:14];
+            
+            CCSequence *sequence5 = [CCSequence actions:
+                                     [CCDelayTime actionWithDuration:3.5], 
+                                     [CCCallFunc actionWithTarget:self selector:@selector(clearAch5)], 
+                                     nil
+                                     ];
+            
+            [achieveLabel1 runAction:sequence5];
+    
+    }
 
     
 }
 
+-(void) clearAch1 
+{
+    [self removeChildByTag:10 cleanup:YES];   
+}
+
+-(void) clearAch2
+{
+    [self removeChildByTag:11 cleanup:YES];
+}
+
+-(void) clearAch3
+{
+    [self removeChildByTag:12 cleanup:YES];
+}
+
+-(void) clearAch4
+{
+    [self removeChildByTag:13 cleanup:YES];
+}
+
+-(void) clearAch5
+{
+    [self removeChildByTag:14 cleanup:YES];
+}
+
+-(void) clearAch6
+{
+    [self removeChild:achieveLabel6 cleanup:YES];
+}
+
+-(void) clearAch7
+{
+    [self removeChild:achieveLabel7 cleanup:YES];
+}
+
+-(void) clearAch8
+{
+    [self removeChild:achieveLabel8 cleanup:YES];
+}
+
+-(void) clearAch9
+{
+    [self removeChild:achieveLabel9 cleanup:YES];
+}
+
+-(void) clearAch10
+{
+    [self removeChild:achieveLabel10 cleanup:YES];
+}
 
 -(void) detectPowerups
 {
@@ -727,6 +831,18 @@ if (remainingLives == 0) {
 {
 	isGameOver = NO;
     remainingLives = 3;
+    
+    //reset all Achievement labels
+    [self clearAch1];
+    [self clearAch2];
+    [self clearAch3];
+    [self clearAch4];
+    [self clearAch5];
+    [self clearAch6];
+    [self clearAch7];
+    [self clearAch8];
+    [self clearAch9];
+    [self clearAch10];
 	
 	// prevent screensaver from darkening the screen while the game is played
 	[self setScreenSaverEnabled:NO];

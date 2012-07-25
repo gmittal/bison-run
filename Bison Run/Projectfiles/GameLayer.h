@@ -51,6 +51,16 @@
 -(void) notInvincible;
 -(void) displayAchievement;
 -(void) checkAchStats;
+-(void) clearAch1;
+-(void) clearAch2;
+-(void) clearAch3;
+-(void) clearAch4;
+-(void) clearAch5;
+-(void) clearAch6;
+-(void) clearAch7;
+-(void) clearAch8;
+-(void) clearAch9;
+-(void) clearAch10;
 
 +(GameLayer*) sharedGameLayer;
 +(CGRect) screenRect;
